@@ -1,5 +1,6 @@
 import torch
 
+
 # Hyperparameters and Configuration
 class Config:
     # Training Configurations
@@ -11,13 +12,19 @@ class Config:
     LEARNING_RATE = 3e-4
 
     # Model Architecture
-    N_EMBED = 384 # C, embedding dimension, every head will be of dimension n_embed // n_head
-    N_HEAD = 6 # number of self-attention heads running in parallel
-    N_LAYER = 6 # number of transformer blocks in the model
-    DROPOUT = 0.2 # every forward-backward pass, 20% of all intermediate calculations are disabled and dropped to 0
+    N_EMBED = 384  # C, embedding dimension, every head will be of dimension n_embed // n_head
+    N_HEAD = 6  # number of self-attention heads running in parallel
+    N_LAYER = 6  # number of transformer blocks in the model
+    DROPOUT = 0.2  # every forward-backward pass, 20% of all intermediate calculations are disabled and dropped to 0
 
     # Device Configuration
-    DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+    DEVICE = (
+        "cuda"
+        if torch.cuda.is_available()
+        else "mps"
+        if torch.backends.mps.is_available()
+        else "cpu"
+    )
 
     # Data Paths
     INPUT_DATA = "data/input.txt"

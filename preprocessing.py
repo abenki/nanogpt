@@ -1,6 +1,7 @@
 import torch
 from config import Config
 
+
 class TextDataset:
     def __init__(self, file_path=Config.INPUT_DATA):
         with open(file_path, "r", encoding="utf-8") as f:
@@ -24,5 +25,5 @@ class TextDataset:
     def get_train_val_split(self, test_split=0.9):
         """Split data into train and validation sets."""
         data = torch.tensor(self.encode(self.text), dtype=torch.long)
-        n = int(test_split * len(data)) # first 90% will be train, the rest is val
+        n = int(test_split * len(data))  # first 90% will be train, the rest is val
         return data[:n], data[n:]

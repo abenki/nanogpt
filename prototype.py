@@ -163,7 +163,6 @@ class Block(nn.Module):
 
 
 class GPT(nn.Module):
-
     def __init__(self):
         super().__init__()
         self.token_embedding_table = nn.Embedding(vocab_size, n_embed)
@@ -221,7 +220,6 @@ optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3)
 
 # training loop
 for iter in range(max_iters):  # increase number of steps for good results...
-
     # every once in a while evalutate loss on train and val
     if iter % eval_interval == 0:
         losses = estimate_loss()
