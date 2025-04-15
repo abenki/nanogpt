@@ -15,7 +15,7 @@ def load_model(model_path, model_class):
         metadata (dict): A dictionary containing the additional metadata.
     """
     # Load the checkpoint
-    checkpoint = torch.load(model_path)
+    checkpoint = torch.load(model_path, weights_only=True)
 
     # Reconstruct the model
     model = model_class(vocab_size=TextDataset().vocab_size)  # Pass the saved config as kwargs
