@@ -1,5 +1,6 @@
 import torch
 from preprocessing import TextDataset
+from config import Config
 
 
 def load_model(model_path, model_class):
@@ -15,7 +16,7 @@ def load_model(model_path, model_class):
         metadata (dict): A dictionary containing the additional metadata.
     """
     # Load the checkpoint
-    checkpoint = torch.load(model_path, weights_only=True)
+    checkpoint = torch.load(model_path, weights_only=True, map_location=Config.DEVICE)
 
     # Reconstruct the model
     model = model_class(vocab_size=TextDataset().vocab_size)  # Pass the saved config as kwargs
